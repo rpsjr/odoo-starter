@@ -9,6 +9,7 @@ set -e
 : ${DB_USER:=${DB_ENV_POSTGRES_USER:=${POSTGRES_USER:='odoo'}}}
 : ${DB_PASSWORD:=${DB_ENV_POSTGRES_PASSWORD:=${POSTGRES_PASSWORD:='odoo'}}}
 : ${PORT:=8080}
+: ${LIMIT_TIME_REAL:=1200}
 
 DB_ARGS=()
 function check_config() {
@@ -24,6 +25,7 @@ check_config "db_port" "$DB_PORT"
 check_config "db_user" "$DB_USER"
 check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
+check_config "--limit-time-real" "$LIMIT_TIME_REAL"
 
 case "$1" in
     -- | odoo)
