@@ -25,7 +25,7 @@ check_config "db_port" "$DB_PORT"
 check_config "db_user" "$DB_USER"
 check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
-check_config "--limit-time-real" "$LIMIT_TIME_REAL"
+check_config "limit-time-real" "$LIMIT_TIME_REAL"
 
 case "$1" in
     -- | odoo)
