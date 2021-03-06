@@ -7,7 +7,7 @@ LABEL maintainer="rpsjr@github"
 COPY ./requirements.txt ./
 
 # Install requirements
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt 
 
 # Copy to root directory
 COPY ./entrypoint.sh /
@@ -18,7 +18,7 @@ COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 
 
-RUN apt install wget
+RUN chmod u+s apt-get install wget
 RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
     wget https://github.com/oca/server-ux/archive/13.0.zip -O server-ux.zip && \
