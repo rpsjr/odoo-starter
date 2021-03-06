@@ -11,10 +11,7 @@ RUN pip3 install -r requirements.txt
 # Copy to root directory
 COPY ./entrypoint.sh /
 
-# Odoo addons
-COPY ./local-src /odoo/local-src
-COPY ./external-src /odoo/external-src
-COPY ./addons /mnt/extra-addons
+
 
 RUN wget https://github.com/odoo/odoo/archive/13.0.zip -O odoo.zip && \
     wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
@@ -30,8 +27,14 @@ RUN wget https://github.com/odoo/odoo/archive/13.0.zip -O odoo.zip && \
     wget https://github.com/Trust-Code/helpdesk/archive/13.0.zip -O helpdesk.zip
 
 
-RUN unzip -q odoo.zip && rm odoo.zip && mv odoo-13.0 odoo && \
-    unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 /odoo/local-src/odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
+RUN unzip -q odoo.zip && rm odoo.zip && mv odoo-13.0 odoo
+
+# Odoo addons
+COPY ./local-src /odoo/local-src
+COPY ./external-src /odoo/external-src
+COPY ./addons /mnt/extra-addons
+
+RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 /odoo/local-src/odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
     unzip -q odoo-apps.zip && rm odoo-apps.zip && mv odoo-apps-13.0 /odoo/local-src/odoo-apps && \
     unzip -q server-ux.zip && rm server-ux.zip && mv server-ux-13.0 /odoo/local-src/server-ux && \
     unzip -q reporting-engine.zip && rm reporting-engine.zip && mv reporting-engine-13.0 /odoo/local-src/reporting-engine && \
