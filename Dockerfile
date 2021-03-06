@@ -1,5 +1,5 @@
-FROM odoo:12
-LABEL maintainer="Nonpawit Teerachetmongkol <nonpawit.tee@aginix.tech>"
+FROM raimundopsjr/docker-odoo-br:13.0.1
+LABEL maintainer="rpsjr@github"
 
 # Copy to Workdir
 COPY ./requirements.txt ./
