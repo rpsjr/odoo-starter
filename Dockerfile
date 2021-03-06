@@ -68,7 +68,7 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 /odoo/external-src
 		unzip -q partner-contact.zip && rm partner-contact.zip && mv partner-contact-13.0 /odoo/external-src/partner-contact && \
 		unzip -q fleet.zip && rm fleet.zip && mv fleet-13.0 /odoo/external-src/fleet && \
 		unzip -q payment_boletointer.zip && rm payment_boletointer.zip && mv payment_boletointer-master /odoo/external-src/payment_boletointer && \
-		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master /odoo/external-src/odoo-brasil/l10n_br_base && \
+		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master /odoo/local-src/odoo-brasil/l10n_br_base && \
 		unzip -q contract.zip && rm contract.zip && mv contract-13.0 /odoo/external-src/contract
 
 
