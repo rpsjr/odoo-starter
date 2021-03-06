@@ -11,6 +11,11 @@ RUN pip3 install -r requirements.txt
 # Copy to root directory
 COPY ./entrypoint.sh /
 
+# Odoo addons
+COPY ./local-src /odoo/local-src
+COPY ./external-src /odoo/external-src
+COPY ./addons /mnt/extra-addons
+
 RUN wget https://github.com/odoo/odoo/archive/13.0.zip -O odoo.zip && \
     wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
@@ -63,10 +68,7 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 /odoo/external-src
 		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master /odoo/external-src/odoo-brasil/l10n_br_base && \
 		unzip -q contract.zip && rm contract.zip && mv contract-13.0 /odoo/external-src/contract
 
-# Odoo addons
-COPY ./local-src /odoo/local-src
-COPY ./external-src /odoo/external-src
-COPY ./addons /mnt/extra-addons
+
 RUN chown odoo /mnt/extra-addons
 
 COPY ./config /etc/odoo
