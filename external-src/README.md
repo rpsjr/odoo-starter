@@ -1,1 +1,1 @@
-Here you should have OCA or other repositories as submodules.
+Here you should have your local addons, committed in this repository.
