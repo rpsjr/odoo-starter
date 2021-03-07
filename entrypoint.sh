@@ -27,6 +27,12 @@ check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
 
+check_config "session_store_database" "1"
+
+check_config "session_store_dbname" "odooses"
+check_config "session_store_dbtable" "tses"
+check_config "load" "web,muk_session_store"
+
 case "$1" in
     -- | odoo)
         shift
