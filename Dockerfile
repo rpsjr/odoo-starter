@@ -14,6 +14,8 @@ COPY ./entrypoint.sh /
 
 # Odoo addons
 COPY ./local-src /odoo/local-src
+ADD https://github.com/rpsjr/payment_boletointer/archive/master.zip /odoo/local-src
+ADD https://github.com/rpsjr/l10n_br_base/archive/master.zip /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 RUN chown odoo /mnt/extra-addons

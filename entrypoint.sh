@@ -10,7 +10,7 @@ set -e
 : ${DB_PASSWORD:=${DB_ENV_POSTGRES_PASSWORD:=${POSTGRES_PASSWORD:='odoo'}}}
 : ${PORT:=8080}
 : ${LIMIT_TIME_REAL:=1200}
-
+: ${LOAD:="web,muk_session_store"}
 DB_ARGS=()
 function check_config() {
     param="$1"
@@ -26,8 +26,9 @@ check_config "db_user" "$DB_USER"
 check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
-check_config "load" "web,muk_session_store"
+check_config "load" "$LOAD"
 
+exec odoo "load"
 
 case "$1" in
     -- | odoo)
