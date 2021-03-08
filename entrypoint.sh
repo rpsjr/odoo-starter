@@ -28,8 +28,6 @@ check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
 
-exec odoo "load"
-
 case "$1" in
     -- | odoo)
         shift
