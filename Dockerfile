@@ -8,15 +8,14 @@ COPY ./requirements.txt ./
 
 # Install requirements
 RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
+RUN pip3 install --no-cache-dir git+https://github.com/erpbrasil/erpbrasil.bank.inter.git
 
 # Copy to root directory
 COPY ./entrypoint.sh /
 
 # Odoo addons
 COPY ./local-src /odoo/local-src
-ADD https://github.com/rpsjr/payment_boletointer/archive/master.zip /odoo/local-src
-RUN unzip -q ./odoo/local-src/payment_boletointer.zip && rm ./odoo/local-src/payment_boletointer.zip && mv ./odoo/local-src/payment_boletointer-master ./odoo/local-src/payment_boletointer
-ADD https://github.com/rpsjr/l10n_br_base/archive/master.zip /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 RUN chown odoo /mnt/extra-addons
