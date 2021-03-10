@@ -7,9 +7,7 @@ LABEL maintainer="rpsjr@github"
 COPY ./requirements.txt ./
 
 # Install requirements
-RUN pip install --upgrade pip
 RUN pip3 install --upgrade pip
-RUN pip install wheel
 RUN pip3 install wheel
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
