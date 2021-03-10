@@ -5,8 +5,18 @@ LABEL maintainer="rpsjr@github"
 
 # Copy to Workdir
 COPY ./requirements.txt ./
+
+
 USER root
+RUN whoami
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && apt-get install -y unzip \
+  && apt-get install -y libxmlsec1-dev \
+  && apt-get install -y libxml2-dev \
+  && rm -rf /var/lib/apt/lists/*
 # Install requirements
+
 RUN pip3 install --upgrade pip setuptools wheel
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
@@ -20,12 +30,7 @@ COPY ./local-src /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 
-USER root
-RUN whoami
-RUN  apt-get update \
-  && apt-get install -y wget \
-  && apt-get install -y wget \
-  && rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /mnt/extra-addons
 
