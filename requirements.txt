@@ -13,15 +13,8 @@ python3-boleto
 pycnab240
 python-sped
 mercadopago
-##### Dependências Odoo #####
-libxml2-dev
-libxslt1-dev
-libevent-dev
-libsasl2-dev
-libldap2-dev
-libpq-dev
-libjpeg-dev
-libffi-dev
+
+
 
 # Ferramentas
 gcc
