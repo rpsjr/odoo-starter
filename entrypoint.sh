@@ -28,6 +28,18 @@ check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
 
+# Monta o addons_path
+directories=$(ls -d -1 $PWD/**)
+path=","
+for directory in $directories; do
+  if [ -d $directory ]; then
+    if [ $directory != "/mnt/extra-addons" ]; then
+      path="$path""$directory",
+    fi
+  fi
+done
+check_config 'addons-path' "$path"
+
 case "$1" in
     -- | odoo)
         shift
