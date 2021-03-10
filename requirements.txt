@@ -17,21 +17,21 @@ mercadopago
 
 
 # Ferramentas
-gcc
-python3-pip
-python3-dev
-locales
-supervisor
-curl
-unzip
-git
-wget
-gettext-base
-openssh-client
-postgresql-client
-make
-pkg-config
-build-essential
+#gcc
+#python3-pip
+#python3-dev
+#locales
+#supervisor
+#curl
+#unzip
+#git
+#wget
+#gettext-base
+#openssh-client
+#postgresql-client
+#make
+#pkg-config
+#build-essential
 
 ##### Dependências da Localização Brasileira #####
 libssl-dev
