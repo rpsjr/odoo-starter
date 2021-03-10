@@ -5,7 +5,7 @@ LABEL maintainer="rpsjr@github"
 
 # Copy to Workdir
 COPY ./requirements.txt ./
-
+USER root
 # Install requirements
 RUN pip3 install --upgrade pip
 RUN pip3 install wheel
