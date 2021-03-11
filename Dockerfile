@@ -30,6 +30,9 @@ RUN apt-get update \
         #&& rm -rf /var/lib/apt/lists/*
 
 
+
+USER odoo
+
 # Install requirements
 
 RUN pip3 install -r requirements.txt
@@ -39,11 +42,13 @@ RUN pip3 install --no-cache-dir git+https://github.com/rpsjr/erpbrasil.bank.inte
 # Copy to root directory
 COPY ./entrypoint.sh /
 
+
+USER root
+
 # Odoo addons
 COPY ./local-src /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
-
 
 
 WORKDIR /odoo/external-src
@@ -95,7 +100,6 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 		unzip -q contract.zip && rm contract.zip && mv contract-13.0 contract
 
 WORKDIR /root
-
 
 
 RUN chown odoo /odoo/external-src
