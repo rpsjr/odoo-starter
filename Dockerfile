@@ -16,10 +16,11 @@ RUN apt-get update \
         unzip \
         python3-setuptools \
         python3-wheel \
+        python3-cryptography \
         apt-utils \
         libxmlsec1-dev \
         libxml2-dev \
-        && rm -rf /var/lib/apt/lists/*
+        #&& rm -rf /var/lib/apt/lists/*
 
 
 # Install requirements
