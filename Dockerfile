@@ -60,7 +60,9 @@ RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-bras
 		wget https://github.com/OCA/server-tools/archive/13.0.zip -O server-tools.zip && \
     wget https://github.com/Trust-Code/helpdesk/archive/13.0.zip -O helpdesk.zip
 
-RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
+RUN ls
+
+RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf l10n_br_base && \
     unzip -q odoo-apps.zip && rm odoo-apps.zip && mv odoo-apps-13.0 odoo-apps && \
     unzip -q server-ux.zip && rm server-ux.zip && mv server-ux-13.0 server-ux && \
     unzip -q reporting-engine.zip && rm reporting-engine.zip && mv reporting-engine-13.0 reporting-engine && \
