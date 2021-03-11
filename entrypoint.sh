@@ -30,6 +30,7 @@ check_config "load" "$LOAD"
 
 # Monta o addons_path
 directories=$(ls -d -1 $PWD/**)
+$directories
 path=","
 for directory in $directories; do
   if [ -d $directory ]; then
@@ -38,6 +39,7 @@ for directory in $directories; do
     fi
   fi
 done
+$path
 check_config 'addons-path' "$path"
 
 case "$1" in
