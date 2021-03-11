@@ -33,6 +33,12 @@ directories=$(ls -d -1 $PWD/**)
 path=","
 for directory in $directories; do
   if [ -d $directory ]; then
+    if [ $directory != "/odoo/external-src" ]; then
+      path="$path""$directory",
+    fi
+    if [ $directory != "/odoo/local-src" ]; then
+      path="$path""$directory",
+    fi
     if [ $directory != "/mnt/extra-addons" ]; then
       path="$path""$directory",
     fi

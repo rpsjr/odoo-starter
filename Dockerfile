@@ -46,9 +46,8 @@ COPY ./addons /mnt/extra-addons
 
 
 
-
-RUN cd /mnt/extra-addons && \
-    wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
+WORKDIR /odoo/external-src
+RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
     wget https://github.com/oca/server-ux/archive/13.0.zip -O server-ux.zip && \
     wget https://github.com/oca/reporting-engine/archive/13.0.zip -O reporting-engine.zip && \
@@ -60,13 +59,8 @@ RUN cd /mnt/extra-addons && \
 		wget https://github.com/OCA/server-tools/archive/13.0.zip -O server-tools.zip && \
     wget https://github.com/Trust-Code/helpdesk/archive/13.0.zip -O helpdesk.zip
 
-RUN ls && \
-    cd .. && \
-    ls && \
-    cd .. && \
-    ls
-RUN cd /mnt/extra-addons && \
-    unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
+WORKDIR /odoo/external-src
+RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
     unzip -q odoo-apps.zip && rm odoo-apps.zip && mv odoo-apps-13.0 odoo-apps && \
     unzip -q server-ux.zip && rm server-ux.zip && mv server-ux-13.0 server-ux && \
     unzip -q reporting-engine.zip && rm reporting-engine.zip && mv reporting-engine-13.0 reporting-engine && \
@@ -76,11 +70,9 @@ RUN cd /mnt/extra-addons && \
 		unzip -q account-payment.zip && rm account-payment.zip && mv account-payment-13.0 account-payment && \
 		unzip -q account-financial-tools.zip && rm account-financial-tools.zip && mv account-financial-tools-13.0 account-financial-tools && \
 		unzip -q server-tools.zip && rm server-tools.zip && mv server-tools-13.0 server-tools && \
-    unzip -q helpdesk.zip && rm helpdesk.zip && mv helpdesk-13.0 helpdesk && \
-    cd odoo && find . -name "*.po" -not -name "pt_BR.po" -not -name "pt.po"  -type f -delete && \
-    find . -path "*l10n_*" -delete && \
-    rm -R debian && rm -R doc && rm -R setup && cd ..
+    unzip -q helpdesk.zip && rm helpdesk.zip && mv helpdesk-13.0 helpdesk
 
+WORKDIR /odoo/local-src
 RUN wget https://github.com/OCA/website/archive/13.0.zip -O website.zip && \
 		wget https://github.com/muk-it/muk_base/archive/13.0.zip -O muk_base.zip && \
 		wget https://github.com/muk-it/muk_web/archive/13.0.zip -O muk_web.zip && \
@@ -91,6 +83,7 @@ RUN wget https://github.com/OCA/website/archive/13.0.zip -O website.zip && \
 		wget https://github.com/rpsjr/l10n_br_base/archive/master.zip -O l10n_br_base.zip && \
 		wget https://github.com/OCA/contract/archive/13.0.zip -O contract.zip
 
+WORKDIR /odoo/local-src
 RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 		unzip -q muk_base.zip && rm muk_base.zip && mv muk_base-13.0 muk_base && \
 		unzip -q muk_web.zip && rm muk_web.zip && mv muk_web-13.0 muk_web && \
@@ -98,13 +91,15 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 		unzip -q partner-contact.zip && rm partner-contact.zip && mv partner-contact-13.0 partner-contact && \
 		unzip -q fleet.zip && rm fleet.zip && mv fleet-13.0 fleet && \
 		unzip -q payment_boletointer.zip && rm payment_boletointer.zip && mv payment_boletointer-master payment_boletointer && \
-		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master odoo-brasil/l10n_br_base && \
+		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master l10n_br_base && \
 		unzip -q contract.zip && rm contract.zip && mv contract-13.0 contract
 
 WORKDIR /root
 
 USER odoo
 
+RUN chown odoo /odoo/external-src
+RUN chown odoo /odoo/local-src
 RUN chown odoo /mnt/extra-addons
 
 COPY ./config /etc/odoo
