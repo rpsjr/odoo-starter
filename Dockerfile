@@ -21,8 +21,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libxmlsec1-dev \
-    libxmlsec1-openssl \
-    python3-xmlsec
+    libxmlsec1-openssl 
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
