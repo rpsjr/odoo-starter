@@ -98,8 +98,8 @@ WORKDIR /root
 
 USER odoo
 
-RUN chown odoo /odoo/external-src
-RUN chown odoo /odoo/local-src
+#RUN chown odoo /odoo/external-src
+#RUN chown odoo /odoo/local-src
 RUN chown odoo /mnt/extra-addons
 
 COPY ./config /etc/odoo
