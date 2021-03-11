@@ -15,9 +15,9 @@ RUN  apt-get update \
   && apt-get install -y libxmlsec1-dev \
   && apt-get install -y libxml2-dev \
   && rm -rf /var/lib/apt/lists/*
-# Install requirements
 
-RUN pip3 install setuptools wheel apt-utils 
+# Install requirements
+RUN pip3 install setuptools wheel apt-utils
 RUN pip3 install --upgrade pip setuptools wheel
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
