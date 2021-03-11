@@ -10,6 +10,8 @@ COPY ./requirements.txt ./
 USER root
 RUN whoami
 
+RUN pip3 install --upgrade pip
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         wget \
