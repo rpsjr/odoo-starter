@@ -33,7 +33,7 @@ directories=$(ls -d -1 '/odoo/external-src'/**)
 path=","
 for directory in $directories; do
   if [ -d $directory ]; then
-    if [ $directory != "/odoo/external-src" ]; then
+    if [ $directory != "z" ]; then
       path="$path""$directory",
     fi
   fi
@@ -41,7 +41,7 @@ done
 directories=$(ls -d -1 '/odoo/local-src'/**)
 for directory in $directories; do
   if [ -d $directory ]; then
-    if [ $directory != "/odoo/local-src" ]; then
+    if [ $directory != "z" ]; then
       path="$path""$directory",
     fi
   fi
@@ -49,22 +49,12 @@ done
 directories=$(ls -d -1 '/mnt/extra-addons'/**)
 for directory in $directories; do
   if [ -d $directory ]; then
-    if [ $directory != "/mnt/extra-addons" ]; then
+    if [ $directory != "z" ]; then
       path="$path""$directory",
     fi
   fi
 done
 check_config 'addons-path' "$path"
-
-directories=$(ls -d -1 '/Users/rpsjr/'/**)
-for directory in $directories; do
-  if [ -d $directory ]; then
-    if [[ $directory == "/Users/rpsjr/github"* ]]; then
-      path="$path""$directory",
-    fi
-  fi
-done
-$path
 
 case "$1" in
     -- | odoo)

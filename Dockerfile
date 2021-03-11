@@ -52,7 +52,7 @@ COPY ./local-src /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 
-RUN cd /odoo/external-src
+RUN cd /odoo/external-src && \
     wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
     wget https://github.com/oca/server-ux/archive/13.0.zip -O server-ux.zip && \
@@ -76,7 +76,7 @@ RUN cd /odoo/external-src
 		unzip -q server-tools.zip && rm server-tools.zip && mv server-tools-13.0 server-tools && \
     unzip -q helpdesk.zip && rm helpdesk.zip && mv helpdesk-13.0 helpdesk
 
-RUN cd /odoo/external-src
+RUN cd /odoo/external-src && \
     wget https://github.com/OCA/website/archive/13.0.zip -O website.zip && \
 		wget https://github.com/muk-it/muk_base/archive/13.0.zip -O muk_base.zip && \
 		wget https://github.com/muk-it/muk_web/archive/13.0.zip -O muk_web.zip && \
