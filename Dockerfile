@@ -9,15 +9,18 @@ COPY ./requirements.txt ./
 
 USER root
 RUN whoami
-RUN pip3 install setuptools wheel
-RUN pip3 install --upgrade pip setuptools wheel
-RUN  apt-get update \
-  && apt-get install -y apt-utils \
-  && apt-get install -y wget \
-  && apt-get install -y unzip \
-  && apt-get install -y libxmlsec1-dev \
-  && apt-get install -y libxml2-dev \
-  && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        wget \
+        unzip \
+        python3-setuptools \
+        python3-wheel \
+        apt-utils \
+        libxmlsec1-dev \
+        libxml2-dev \
+        && rm -rf /var/lib/apt/lists/*
+
 
 # Install requirements
 
