@@ -24,11 +24,11 @@ RUN apt-get update \
         python3-setuptools \
         python3-wheel \
         python3-cryptography \
+        python3-xmlsec \
         apt-utils \
         libxmlsec1-dev \
         libxml2-dev #\
         #&& rm -rf /var/lib/apt/lists/*
-
 
 
 USER odoo
