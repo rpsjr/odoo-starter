@@ -51,6 +51,7 @@ COPY ./local-src /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 
+USER root
 RUN cd /odoo/external-src && \
     wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
@@ -99,6 +100,7 @@ RUN chown -R odoo /odoo/external-src
 RUN chown -R odoo /odoo/local-src
 RUN chown -R odoo /mnt/extra-addons
 
+USER odoo
 COPY ./config /etc/odoo
 
 EXPOSE 8080
