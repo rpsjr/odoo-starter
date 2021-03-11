@@ -109,6 +109,8 @@ RUN chown -R odoo /odoo/external-src
 RUN chown -R odoo /odoo/local-src
 RUN chown -R odoo /mnt/extra-addons
 
+RUN chmod +x /root
+
 USER odoo
 
 COPY ./config /etc/odoo
