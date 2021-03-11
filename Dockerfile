@@ -98,8 +98,8 @@ WORKDIR /root
 
 
 
-RUN chmod 777 odoo /odoo/external-src
-RUN chmod 777 odoo /odoo/local-src
+RUN chown odoo /odoo/external-src
+RUN chown odoo /odoo/local-src
 RUN chown odoo /mnt/extra-addons
 
 USER odoo
