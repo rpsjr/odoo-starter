@@ -20,6 +20,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         wget \
         unzip \
+        git \
         python3-setuptools \
         python3-wheel \
         python3-cryptography \
@@ -33,7 +34,7 @@ RUN apt-get update \
 
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
-RUN pip3 install --no-cache-dir git+https://github.com/erpbrasil/erpbrasil.bank.inter.git
+RUN pip3 install --no-cache-dir git+https://github.com/rpsjr/erpbrasil.bank.inter.git
 
 # Copy to root directory
 COPY ./entrypoint.sh /
