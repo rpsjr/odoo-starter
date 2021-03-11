@@ -96,11 +96,13 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 
 WORKDIR /root
 
-USER odoo
+
 
 RUN chmod 777 odoo /odoo/external-src
 RUN chmod 777 odoo /odoo/local-src
 RUN chown odoo /mnt/extra-addons
+
+USER odoo
 
 COPY ./config /etc/odoo
 
