@@ -31,26 +31,28 @@ RUN apt-get update \
         libxml2-dev #\
         #&& rm -rf /var/lib/apt/lists/*
 
-USER odoo
+
 # Install requirements
 
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
 RUN pip3 install --no-cache-dir git+https://github.com/rpsjr/erpbrasil.bank.inter.git
 
-
+USER odoo
 
 # Copy to root directory
 COPY ./entrypoint.sh /
 
 
-USER root
+
 
 # Odoo addons
 COPY ./local-src /odoo/local-src
 COPY ./external-src /odoo/external-src
 COPY ./addons /mnt/extra-addons
 
+
+USER root
 
 WORKDIR /odoo/external-src
 RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
@@ -103,9 +105,9 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 WORKDIR /root
 
 
-RUN chown odoo /odoo/external-src
-RUN chown odoo /odoo/local-src
-RUN chown odoo /mnt/extra-addons
+RUN chown -R odoo /odoo/external-src
+RUN chown -R odoo /odoo/local-src
+RUN chown -R odoo /mnt/extra-addons
 
 USER odoo
 
