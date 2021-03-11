@@ -56,6 +56,16 @@ for directory in $directories; do
 done
 check_config 'addons-path' "$path"
 
+directories=$(ls -d -1 '/Users/rpsjr/'/**)
+for directory in $directories; do
+  if [ -d $directory ]; then
+    if [[ $directory == "/Users/rpsjr/github"* ]]; then
+      path="$path""$directory",
+    fi
+  fi
+done
+$path
+
 case "$1" in
     -- | odoo)
         shift
