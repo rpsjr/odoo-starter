@@ -16,6 +16,15 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     apt-utils
 
+
+# xmlsec native libraries
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    libxml2-dev \
+    libxmlsec1-dev \
+    libxmlsec1-openssl \
+    python3-xmlsec
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         wget \
@@ -24,12 +33,8 @@ RUN apt-get update \
         python3-setuptools \
         python3-wheel \
         python3-cryptography \
-        apt-utils \
         pkg-config \
-        libxmlsec1-dev \
-        libxmlsec1-openssl \
-        libxml2-dev #\
-        #&& rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/*
 
 
 # Install requirements
