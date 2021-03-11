@@ -9,7 +9,7 @@ COPY ./requirements.txt ./
 
 USER root
 RUN whoami
-RUN pip3 install setuptools wheel apt-utils
+RUN pip3 install setuptools wheel
 RUN pip3 install --upgrade pip setuptools wheel
 RUN  apt-get update \
   && apt-get install -y apt-utils \
