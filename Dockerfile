@@ -27,10 +27,9 @@ RUN apt-get update \
         apt-utils \
         pkg-config \
         libxmlsec1-dev \
+        libxmlsec1-openssl \
         libxml2-dev #\
         #&& rm -rf /var/lib/apt/lists/*
-
-
 
 USER odoo
 # Install requirements
