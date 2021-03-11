@@ -46,9 +46,9 @@ COPY ./addons /mnt/extra-addons
 
 
 
-WORKDIR /mnt/extra-addons
 
-RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
+RUN cd /mnt/extra-addons && \
+    wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
     wget https://github.com/oca/server-ux/archive/13.0.zip -O server-ux.zip && \
     wget https://github.com/oca/reporting-engine/archive/13.0.zip -O reporting-engine.zip && \
@@ -65,7 +65,8 @@ RUN ls && \
     ls && \
     cd .. && \
     ls
-RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
+RUN cd /mnt/extra-addons && \
+    unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
     unzip -q odoo-apps.zip && rm odoo-apps.zip && mv odoo-apps-13.0 odoo-apps && \
     unzip -q server-ux.zip && rm server-ux.zip && mv server-ux-13.0 server-ux && \
     unzip -q reporting-engine.zip && rm reporting-engine.zip && mv reporting-engine-13.0 reporting-engine && \
