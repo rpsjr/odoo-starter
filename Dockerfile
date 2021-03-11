@@ -111,14 +111,14 @@ RUN chown -R odoo /mnt/extra-addons
 
 RUN chmod +x /root
 
-USER odoo
+#USER odoo
 
 COPY ./config /etc/odoo
 
 EXPOSE 8080
 
 # Set default user when running the container
-USER odoo
+#USER odoo
 
 ENV PORT 8080
 
