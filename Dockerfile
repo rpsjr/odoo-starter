@@ -9,6 +9,8 @@ COPY ./requirements.txt ./
 
 USER root
 RUN whoami
+RUN pip3 install setuptools wheel apt-utils
+RUN pip3 install --upgrade pip setuptools wheel
 RUN  apt-get update \
   && apt-get install -y wget \
   && apt-get install -y unzip \
@@ -17,8 +19,7 @@ RUN  apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install requirements
-RUN pip3 install setuptools wheel apt-utils
-RUN pip3 install --upgrade pip setuptools wheel
+
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
 RUN pip3 install --no-cache-dir git+https://github.com/erpbrasil/erpbrasil.bank.inter.git
