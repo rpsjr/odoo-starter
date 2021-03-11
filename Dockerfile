@@ -21,7 +21,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libxmlsec1-dev \
-    libxmlsec1-openssl 
+    libxmlsec1-openssl
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -31,8 +31,8 @@ RUN apt-get update \
         python3-setuptools \
         python3-wheel \
         python3-cryptography \
-        pkg-config \
-        && rm -rf /var/lib/apt/lists/*
+        pkg-config #\
+        #&& rm -rf /var/lib/apt/lists/*
 
 
 # Install requirements
