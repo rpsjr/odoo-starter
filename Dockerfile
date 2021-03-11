@@ -24,7 +24,8 @@ RUN apt-get update \
         python3-setuptools \
         python3-wheel \
         python3-cryptography \
-        python3-xmlsec \
+        python3-libxmlsec1-dev \
+        python3- pkg-config\
         apt-utils \
         libxmlsec1-dev \
         libxml2-dev #\
