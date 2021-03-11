@@ -25,18 +25,21 @@ RUN apt-get update \
         python3-wheel \
         python3-cryptography \
         apt-utils \
+        pkg-config \
         libxmlsec1-dev \
         libxml2-dev #\
         #&& rm -rf /var/lib/apt/lists/*
 
 
-USER odoo
 
+USER odoo
 # Install requirements
 
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
 RUN pip3 install --no-cache-dir git+https://github.com/rpsjr/erpbrasil.bank.inter.git
+
+
 
 # Copy to root directory
 COPY ./entrypoint.sh /
