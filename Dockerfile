@@ -1,10 +1,43 @@
-FROM code137oficial/docker-odoo-base:13.0
+#FROM raimundopsjr/docker-odoo-br:13.0.1
+#FROM code137oficial/docker-odoo-base:13.0
+FROM odoo:13
+LABEL maintainer="rpsjr@github"
 
-	##### Repositórios TrustCode #####
-WORKDIR /opt/odoo
+# Copy to Workdir
+COPY ./requirements.txt ./
 
-RUN wget https://github.com/odoo/odoo/archive/13.0.zip -O odoo.zip && \
-    wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
+
+USER root
+RUN whoami
+RUN pip3 install setuptools wheel
+RUN pip3 install --upgrade pip setuptools wheel
+RUN  apt-get update \
+  && apt-get install -y apt-utils \
+  && apt-get install -y wget \
+  && apt-get install -y unzip \
+  && apt-get install -y libxmlsec1-dev \
+  && apt-get install -y libxml2-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install requirements
+
+RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
+RUN pip3 install --no-cache-dir git+https://github.com/erpbrasil/erpbrasil.bank.inter.git
+
+# Copy to root directory
+COPY ./entrypoint.sh /
+
+# Odoo addons
+COPY ./local-src /odoo/local-src
+COPY ./external-src /odoo/external-src
+COPY ./addons /mnt/extra-addons
+
+
+
+WORKDIR /mnt/extra-addons
+
+RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-brasil.zip && \
     wget https://github.com/Code-137/odoo-apps/archive/13.0.zip -O odoo-apps.zip && \
     wget https://github.com/oca/server-ux/archive/13.0.zip -O server-ux.zip && \
     wget https://github.com/oca/reporting-engine/archive/13.0.zip -O reporting-engine.zip && \
@@ -16,9 +49,7 @@ RUN wget https://github.com/odoo/odoo/archive/13.0.zip -O odoo.zip && \
 		wget https://github.com/OCA/server-tools/archive/13.0.zip -O server-tools.zip && \
     wget https://github.com/Trust-Code/helpdesk/archive/13.0.zip -O helpdesk.zip
 
-
-RUN unzip -q odoo.zip && rm odoo.zip && mv odoo-13.0 odoo && \
-    unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
+RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
     unzip -q odoo-apps.zip && rm odoo-apps.zip && mv odoo-apps-13.0 odoo-apps && \
     unzip -q server-ux.zip && rm server-ux.zip && mv server-ux-13.0 server-ux && \
     unzip -q reporting-engine.zip && rm reporting-engine.zip && mv reporting-engine-13.0 reporting-engine && \
@@ -43,8 +74,6 @@ RUN wget https://github.com/OCA/website/archive/13.0.zip -O website.zip && \
 		wget https://github.com/rpsjr/l10n_br_base/archive/master.zip -O l10n_br_base.zip && \
 		wget https://github.com/OCA/contract/archive/13.0.zip -O contract.zip
 
-
-
 RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 		unzip -q muk_base.zip && rm muk_base.zip && mv muk_base-13.0 muk_base && \
 		unzip -q muk_web.zip && rm muk_web.zip && mv muk_web-13.0 muk_web && \
@@ -55,49 +84,20 @@ RUN unzip -q website.zip && rm website.zip && mv website-13.0 website && \
 		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master odoo-brasil/l10n_br_base && \
 		unzip -q contract.zip && rm contract.zip && mv contract-13.0 contract
 
+WORKDIR /root
 
+USER odoo
 
-RUN pip3 install --no-cache-dir moedaparatexto api-fipe-consumo-RPSJR num2words vininfo
+RUN chown odoo /mnt/extra-addons
 
-RUN pip3 install --no-cache-dir erpbrasil.base
-
-RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
-
-RUN pip3 install --no-cache-dir git+https://github.com/erpbrasil/erpbrasil.bank.inter.git
-
-RUN pip install --no-cache-dir pytrustnfe3 python3-cnab python3-boleto pycnab240 python-sped
-
-RUN pip3 install --no-cache-dir mercadopago
-
-	##### Configurações Odoo #####
-
-ADD conf/odoo.conf /etc/odoo/
-RUN chown -R odoo:odoo /opt && \
-    chown -R odoo:odoo /etc/odoo/odoo.conf
-
-RUN mkdir /opt/.ssh && \
-    chown -R odoo:odoo /opt/.ssh
-
-ADD bin/autoupdate /opt/odoo
-ADD bin/entrypoint.sh /opt/odoo
-RUN chown odoo:odoo /opt/odoo/autoupdate && \
-    chmod +x /opt/odoo/autoupdate && \
-    chmod +x /opt/odoo/entrypoint.sh
-
-WORKDIR /opt/odoo
+COPY ./config /etc/odoo
 
 EXPOSE 8080
 
-ENV PYTHONPATH=$PYTHONPATH:/opt/odoo/odoo
-ENV PG_HOST=localhost
-ENV PG_USER=odoo
-ENV PG_PASSWORD=False
-ENV PG_DATABASE=False
-ENV ODOO_PASSWORD=False
-ENV LOG_FILE=/var/log/odoo/odoo.log
-ENV PROXYMODE=False
+# Set default user when running the container
+USER odoo
 
+ENV PORT 8080
 
-VOLUME ["/opt/", "/etc/odoo"]
-ENTRYPOINT ["/opt/odoo/entrypoint.sh"]
-CMD ["/usr/bin/supervisord"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["odoo"]
