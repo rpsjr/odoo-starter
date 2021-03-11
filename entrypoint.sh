@@ -29,27 +29,11 @@ check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
 
 # Monta o addons_path
-directories=$(ls -d -1 '/odoo/external-src'/**)
+directories=$(ls -d -1 $PWD/**)
 path=","
 for directory in $directories; do
   if [ -d $directory ]; then
-    if [ $directory != "z" ]; then
-      path="$path""$directory",
-    fi
-  fi
-done
-directories=$(ls -d -1 '/odoo/local-src'/**)
-for directory in $directories; do
-  if [ -d $directory ]; then
-    if [ $directory != "z" ]; then
-      path="$path""$directory",
-    fi
-  fi
-done
-directories=$(ls -d -1 '/mnt/extra-addons'/**)
-for directory in $directories; do
-  if [ -d $directory ]; then
-    if [ $directory != "z" ]; then
+    if [ $directory != "/odoo/odoo" ]; then
       path="$path""$directory",
     fi
   fi
