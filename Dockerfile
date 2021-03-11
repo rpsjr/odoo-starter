@@ -10,7 +10,7 @@ COPY ./requirements.txt ./
 USER root
 RUN whoami
 
-RUN pip3 install --upgrade pip
+RUN pip install --upgrade pip
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -21,7 +21,7 @@ RUN apt-get update \
         python3-cryptography \
         apt-utils \
         libxmlsec1-dev \
-        libxml2-dev \
+        libxml2-dev #\
         #&& rm -rf /var/lib/apt/lists/*
 
 
