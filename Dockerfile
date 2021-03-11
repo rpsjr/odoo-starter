@@ -17,6 +17,7 @@ RUN  apt-get update \
   && rm -rf /var/lib/apt/lists/*
 # Install requirements
 
+RUN pip3 install setuptools wheel
 RUN pip3 install --upgrade pip setuptools wheel
 RUN pip3 install -r requirements.txt
 RUN pip3 install --no-cache-dir https://github.com/kmee/febraban-python/archive/feature/improve-user-model.zip
