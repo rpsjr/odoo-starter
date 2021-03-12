@@ -30,6 +30,7 @@ check_config "load" "$LOAD"
 
 # Monta o addons_path
 cd //odoo/external-src
+$(ls -d -1 $PWD/**)
 directories=$(ls -d -1 $PWD/**)
 path=","
 for directory in $directories; do
