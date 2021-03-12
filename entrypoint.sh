@@ -46,7 +46,7 @@ for directory in $directories; do
 done
 path=${path::-1}
 echo "$path"
-check_config "addons-path "$path"
+check_config 'addons-path' "$path"
 
 cd /
 
