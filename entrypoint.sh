@@ -31,9 +31,8 @@ check_config "load" "$LOAD"
 # Monta o addons_path
 cd //odoo/external-src
 directories=$(ls -d -1 $PWD/**)
-path=","
+path=""
 for directory in $directories; do
-  echo "$path"
   if [ -d $directory ]; then
     path="$path""$directory",
   fi
@@ -41,11 +40,11 @@ done
 cd //odoo/local-src
 directories=$(ls -d -1 $PWD/**)
 for directory in $directories; do
-  echo "$path"
   if [ -d $directory ]; then
     path="$path""$directory",
   fi
 done
+echo "$path"
 path=${path::-1}
 check_config "addons-path "$path"
 
