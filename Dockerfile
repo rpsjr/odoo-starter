@@ -80,7 +80,7 @@ RUN wget https://github.com/rpsjr/fleet_management/archive/13.0.zip -O fleet_man
 
 RUN unzip -q fleet_management.zip && rm fleet_management.zip && mv fleet_management-13.0 fleet_management && \
 		unzip -q payment_boletointer.zip && rm payment_boletointer.zip && mv payment_boletointer-master payment_boletointer && \
-		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mkdir /odoo-brasil/ && mv l10n_br_base-master odoo-brasil/l10n_br_base
+		unzip -q l10n_br_base.zip && rm l10n_br_base.zip && mv l10n_br_base-master //odoo/external-src/odoo-brasil/l10n_br_base
 
 RUN directories=$(ls -d -1 '//odoo/local-src'/**)
 
