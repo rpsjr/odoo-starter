@@ -20,8 +20,6 @@ USER odoo
 # Copy to root directory
 COPY ./entrypoint.sh /
 
-#RUN $(ls -d -1 $PWD/**)
-
 # Odoo addons
 COPY ./local-src /odoo/local-src
 COPY ./external-src /odoo/external-src
