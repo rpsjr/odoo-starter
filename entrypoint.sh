@@ -44,8 +44,8 @@ for directory in $directories; do
     path="$path""$directory",
   fi
 done
-echo "$path"
 path=${path::-1}
+echo "$path"
 check_config "addons-path "$path"
 
 cd /
