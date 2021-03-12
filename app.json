@@ -16,6 +16,10 @@
     "DB_PASSWORD": {
       "description": "The password of the postgres role with which Odoo will connect. If you used a postgres container, set to the same value as POSTGRES_PASSWORD.",
       "required": true
+    },
+    "ADMIN_PASSWD": {
+      "description": "The password of the ADMIN_PASSWD.",
+      "required": true
     }
   }
 }

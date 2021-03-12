@@ -27,6 +27,7 @@ check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
+check_config "admin_passwd" "$ADMIN_PASSWD"
 
 # Monta o addons_path
 cd //odoo/external-src
