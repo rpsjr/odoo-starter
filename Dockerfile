@@ -8,22 +8,19 @@ COPY ./requirements.txt ./
 USER root
 # Install apt requirements
 ADD conf/apt-requirements /opt/sources/
-RUN apt-get update  \
-    && apt-get install --no-install-recommends -y \
-    wget \
-    unzip\
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update  && \
+    apt-get install -y --no-install-recommends $(grep -v '^#' /opt/sources/apt-requirements) && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set locale
-#USER root
-#RUN locale-gen en_US en_US.UTF-8 pt_BR pt_BR.UTF-8 && \
-#    dpkg-reconfigure locales
+#Set locale
+USER root
+RUN locale-gen en_US en_US.UTF-8 pt_BR pt_BR.UTF-8 && \
+    dpkg-reconfigure locales
 
-#ENV LC_ALL pt_BR.UTF-8
-#USER odoo
+ENV LC_ALL pt_BR.UTF-8
+USER odoo
 
-RUN apt-get update  \
-    apt-get install -y --no-install-recommends $(grep -v '^#' apt-requirement
+
 
 USER odoo
 
