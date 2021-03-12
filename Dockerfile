@@ -49,6 +49,7 @@ RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-bras
 		wget https://github.com/muk-it/muk_web/archive/13.0.zip -O muk_web.zip && \
     wget https://github.com/OCA/partner-contact/archive/13.0.zip -O partner-contact.zip  && \
     wget https://github.com/OCA/fleet/archive/13.0.zip -O fleet.zip  && \
+    wget https://github.com/rpsjr/trustcode-addons/archive/13.0.zip -O trustcode-addons.zip  && \
     wget https://github.com/OCA/contract/archive/13.0.zip -O contract.zip
 
 RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-brasil && rm -rf odoo-brasil/l10n_br_base && \
@@ -67,6 +68,7 @@ RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-b
 		unzip -q muk_web.zip && rm muk_web.zip && mv muk_web-13.0 muk_web && \
     unzip -q partner-contact.zip && rm partner-contact.zip && mv partner-contact-13.0 partner-contact && \
 		unzip -q fleet.zip && rm fleet.zip && mv fleet-13.0 fleet && \
+    unzip -q trustcode-addons.zip && rm trustcode-addons.zip && mv trustcode-addons-13.0 trustcode-addons && \
     unzip -q contract.zip && rm contract.zip && mv contract-13.0 contract
 
 RUN directories=$(ls -d -1 '//odoo/external-src'/**)
