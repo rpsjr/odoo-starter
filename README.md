@@ -1,18 +1,11 @@
 # Odoo
 
-https://github.com/odoo/docker/blob/master/12.0
+https://github.com/odoo/docker/blob/master/13.0
 
 [![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
 
 ## How to run
 
-Copy `docker-compose.example.yml` to `docker-compose.yml`
-
-Copy `config/odoo.example.conf` to `config/odoo.conf`
-
-then edit your own configuration
-
-`docker-compose up -d`
 
 ## Environment Variables
 

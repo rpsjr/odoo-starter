@@ -4,10 +4,10 @@ libxslt1-dev
 libevent-dev
 libsasl2-dev
 libldap2-dev
-libpq-dev
+
 libjpeg-dev
 libtiff5-dev
-libjpeg8-dev
+libjpeg-dev
 libopenjp2-7-dev
 zlib1g-dev
 libfreetype6-dev
