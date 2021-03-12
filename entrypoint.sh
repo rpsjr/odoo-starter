@@ -33,7 +33,7 @@ cd //odoo/external-src
 directories=$(ls -d -1 $PWD/**)
 path=","
 for directory in $directories; do
-  echo "$path"
+
   if [ -d $directory ]; then
     if [ $directory != "/opt/odoo/odoo" ]; then
       path="$path""$directory",
@@ -41,7 +41,8 @@ for directory in $directories; do
     fi
   fi
 done
-check_config 'addons-path' "$path"
+echo "$path"
+check_config "addons-path" "$path"
 
 cd /
 
