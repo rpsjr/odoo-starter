@@ -84,6 +84,10 @@ RUN unzip -q fleet_management.zip && rm fleet_management.zip && mv fleet_managem
 
 RUN directories=$(ls -d -1 '//odoo/local-src'/**)
 
+USER root
+RUN chown odoo /odoo/local-src
+RUN chown odoo /odoo/external-src
+USER odoo
 
 WORKDIR //
 
