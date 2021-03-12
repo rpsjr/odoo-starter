@@ -29,16 +29,19 @@ check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
 
 # Monta o addons_path
-directories=$(ls -d -1 '//odoo/external-src'/**)
+cd //odoo/external-src
+directories=$(ls -d -1 $PWD/**)
 path=","
 for directory in $directories; do
   if [ -d $directory ]; then
-    if [ $directory != "/mnt/extra-addons" ]; then
+    if [ $directory != "/opt/odoo/odoo" ]; then
       path="$path""$directory",
     fi
   fi
 done
 check_config 'addons-path' "$path"
+
+cd /
 
 case "$1" in
     -- | odoo)
