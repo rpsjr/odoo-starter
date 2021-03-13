@@ -11,7 +11,12 @@ set -e
 : ${PORT:=8080}
 : ${LIMIT_TIME_REAL:=1200}
 : ${LOAD:="web,muk_session_store"}
-: ${ADMIN_PASSWD:="dev123"}
+: ${EMAIL-FROM:=""}
+: ${SMTP:=""}
+: ${SMTP-PORT:=""}
+: ${SMTP-SSL:=""}
+: ${SMTP-USER:=""}
+: ${SMTP-PASSWORD:=""}
 DB_ARGS=()
 function check_config() {
     param="$1"
@@ -28,7 +33,14 @@ check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
-check_config "admin_passwd" "$ADMIN_PASSWD"
+
+check_config "email-from" "$EMAIL-FROM"
+check_config "smtp" "$SMTP"
+check_config "smtp-port" "$SMTP-PORT"
+check_config "smtp-ssl" "$SMTP-SSL"
+check_config "smtp-user" "$SMTP-USER"
+check_config "smtp-password" "$SMTP-PASSWORD"
+
 
 # Monta o addons_path
 cd //odoo/external-src
