@@ -11,6 +11,7 @@ set -e
 : ${PORT:=8080}
 : ${LIMIT_TIME_REAL:=1200}
 : ${LOAD:="web,muk_session_store"}
+: ${ODOO_PASSWORD:="dev123"}
 DB_ARGS=()
 function check_config() {
     param="$1"
