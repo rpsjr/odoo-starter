@@ -11,7 +11,7 @@ set -e
 : ${PORT:=8080}
 : ${LIMIT_TIME_REAL:=1200}
 : ${LOAD:="web,muk_session_store"}
-: ${ODOO_PASSWORD:="dev123"}
+: ${ADMIN_PASSWD:="dev123"}
 DB_ARGS=()
 function check_config() {
     param="$1"
@@ -28,7 +28,7 @@ check_config "db_password" "$DB_PASSWORD"
 check_config "http-port" "$PORT"
 check_config "limit-time-real" "$LIMIT_TIME_REAL"
 check_config "load" "$LOAD"
-check_config "odoo_password" "$ODOO_PASSWORD"
+check_config "admin_passwd" "$ADMIN_PASSWD"
 
 # Monta o addons_path
 cd //odoo/external-src
