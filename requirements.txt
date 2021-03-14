@@ -1,6 +1,4 @@
 wheel 
-pyOpenSSL<20,>=17.5.0
-
 boto3==1.10.16
 botocore==1.13.16
 jmespath==0.9.4
@@ -27,7 +25,8 @@ plotly==2.4.1
 pandas==1.0.0
 relatorio==0.6.4
 urllib3==1.22
-pyopenssl==17.2.0
+#pyopenssl==17.2.0
+pyopenssl
 num2words==0.5.6
 twilio
 pika==0.12.0
