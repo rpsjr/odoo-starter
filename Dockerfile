@@ -1,3 +1,6 @@
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM=xterm
+
 FROM odoo:13
 LABEL maintainer="rpsjr@github"
 
