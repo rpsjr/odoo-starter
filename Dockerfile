@@ -3,8 +3,8 @@
 FROM odoo:13
 LABEL maintainer="rpsjr@github"
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV TERM=xterm
+#ENV DEBIAN_FRONTEND noninteractive
+#ENV TERM=xterm
 
 # Copy to Workdir
 COPY ./requirements.txt ./
