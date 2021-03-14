@@ -1,4 +1,5 @@
 wheel 
+pyOpenSSL<20,>=17.5.0
 
 boto3==1.10.16
 botocore==1.13.16
@@ -19,7 +20,7 @@ mercadopago
 
 # odoo-brasil
 suds-jurko-requests
-xmlsec
+xmlsec==1.3.3
 
 # trustcode-addons
 plotly==2.4.1
