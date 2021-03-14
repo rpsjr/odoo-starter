@@ -1,6 +1,6 @@
 
 
-FROM odoo:13
+FROM odoo:14
 LABEL maintainer="rpsjr@github"
 
 #ENV DEBIAN_FRONTEND noninteractive
@@ -54,14 +54,14 @@ RUN wget https://github.com/Trust-Code/odoo-brasil/archive/13.0.zip -O odoo-bras
     wget https://github.com/oca/reporting-engine/archive/13.0.zip -O reporting-engine.zip && \
     wget https://github.com/oca/account-financial-reporting/archive/13.0.zip -O account-financial-reporting.zip && \
     wget https://github.com/oca/mis-builder/archive/13.0.zip -O mis-builder.zip && \
-		wget https://github.com/OCA/bank-payment/archive/13.0.zip -O bank-payment.zip && \
-		wget https://github.com/OCA/account-payment/archive/13.0.zip -O account-payment.zip && \
-		wget https://github.com/OCA/account-financial-tools/archive/13.0.zip -O account-financial-tools.zip && \
-		wget https://github.com/OCA/server-tools/archive/13.0.zip -O server-tools.zip && \
+    wget https://github.com/OCA/bank-payment/archive/13.0.zip -O bank-payment.zip && \
+    wget https://github.com/OCA/account-payment/archive/13.0.zip -O account-payment.zip && \
+    wget https://github.com/OCA/account-financial-tools/archive/13.0.zip -O account-financial-tools.zip && \
+    wget https://github.com/OCA/server-tools/archive/13.0.zip -O server-tools.zip && \
     wget https://github.com/Trust-Code/helpdesk/archive/13.0.zip -O helpdesk.zip && \
     wget https://github.com/OCA/website/archive/13.0.zip -O website.zip && \
-		wget https://github.com/muk-it/muk_base/archive/13.0.zip -O muk_base.zip && \
-		wget https://github.com/muk-it/muk_web/archive/13.0.zip -O muk_web.zip && \
+    wget https://github.com/muk-it/muk_base/archive/13.0.zip -O muk_base.zip && \
+    wget https://github.com/muk-it/muk_web/archive/13.0.zip -O muk_web.zip && \
     wget https://github.com/OCA/partner-contact/archive/13.0.zip -O partner-contact.zip  && \
     wget https://github.com/OCA/fleet/archive/13.0.zip -O fleet.zip  && \
     wget https://github.com/rpsjr/trustcode-addons/archive/13.0.zip -O trustcode-addons.zip  && \
@@ -73,16 +73,16 @@ RUN unzip -q odoo-brasil.zip && rm odoo-brasil.zip && mv odoo-brasil-13.0 odoo-b
     unzip -q reporting-engine.zip && rm reporting-engine.zip && mv reporting-engine-13.0 reporting-engine && \
     unzip -q account-financial-reporting.zip && rm account-financial-reporting.zip && mv account-financial-reporting-13.0 account-financial-reporting && \
     unzip -q mis-builder.zip && rm mis-builder.zip && mv mis-builder-13.0 mis-builder && \
-		unzip -q bank-payment.zip && rm bank-payment.zip && mv bank-payment-13.0 bank-payment && \
-		unzip -q account-payment.zip && rm account-payment.zip && mv account-payment-13.0 account-payment && \
-		unzip -q account-financial-tools.zip && rm account-financial-tools.zip && mv account-financial-tools-13.0 account-financial-tools && \
-		unzip -q server-tools.zip && rm server-tools.zip && mv server-tools-13.0 server-tools && \
+    unzip -q bank-payment.zip && rm bank-payment.zip && mv bank-payment-13.0 bank-payment && \
+    unzip -q account-payment.zip && rm account-payment.zip && mv account-payment-13.0 account-payment && \
+    unzip -q account-financial-tools.zip && rm account-financial-tools.zip && mv account-financial-tools-13.0 account-financial-tools && \
+    unzip -q server-tools.zip && rm server-tools.zip && mv server-tools-13.0 server-tools && \
     unzip -q helpdesk.zip && rm helpdesk.zip && mv helpdesk-13.0 helpdesk && \
     unzip -q website.zip && rm website.zip && mv website-13.0 website && \
-		unzip -q muk_base.zip && rm muk_base.zip && mv muk_base-13.0 muk_base && \
-		unzip -q muk_web.zip && rm muk_web.zip && mv muk_web-13.0 muk_web && \
+    unzip -q muk_base.zip && rm muk_base.zip && mv muk_base-13.0 muk_base && \
+    unzip -q muk_web.zip && rm muk_web.zip && mv muk_web-13.0 muk_web && \
     unzip -q partner-contact.zip && rm partner-contact.zip && mv partner-contact-13.0 partner-contact && \
-		unzip -q fleet.zip && rm fleet.zip && mv fleet-13.0 fleet && \
+    unzip -q fleet.zip && rm fleet.zip && mv fleet-13.0 fleet && \
     unzip -q trustcode-addons.zip && rm trustcode-addons.zip && mv trustcode-addons-13.0 trustcode-addons && \
     unzip -q contract.zip && rm contract.zip && mv contract-13.0 contract
 
