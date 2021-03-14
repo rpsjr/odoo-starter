@@ -1,6 +1,6 @@
 
 
-FROM odoo:14
+FROM odoo:13
 LABEL maintainer="rpsjr@github"
 
 #ENV DEBIAN_FRONTEND noninteractive
