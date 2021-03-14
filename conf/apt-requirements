@@ -1,3 +1,7 @@
+libpq-dev
+python3-venv
+python3-wheel
+
 ##### Dependências Odoo #####
 libxml2-dev
 libxslt1-dev
