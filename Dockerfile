@@ -25,7 +25,7 @@ USER odoo
 USER odoo
 
 # Install requirements
-RUN python3 -m install --upgrade pip
+RUN python3 -m install -upgrade pip
 RUN pip3 install -r requirements.txt
 
 # Copy to root directory
