@@ -30,7 +30,7 @@ USER odoo
 
 # Install requirements
 RUN pip3 install setuptools && pip3 install --no-cache-dir --upgrade pip
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Copy to root directory
 COPY ./entrypoint.sh /
