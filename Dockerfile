@@ -21,6 +21,8 @@ USER root
 RUN locale-gen en_US en_US.UTF-8 pt_BR pt_BR.UTF-8 && \
     dpkg-reconfigure locales
 
+RUN update-locale LANG=pt_BR
+
 ENV LC_ALL pt_BR.UTF-8
 
 
