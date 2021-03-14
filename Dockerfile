@@ -18,15 +18,12 @@ RUN locale-gen en_US en_US.UTF-8 pt_BR pt_BR.UTF-8 && \
     dpkg-reconfigure locales
 
 ENV LC_ALL pt_BR.UTF-8
-USER odoo
-
-
 
 USER odoo
 
 # Install requirements
-RUN python3 -m pip install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip3 install setuptools && pip3 install --no-cache-dir --upgrade pip
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy to root directory
 COPY ./entrypoint.sh /
