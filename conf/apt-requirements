@@ -1,25 +1,24 @@
-libpq-dev
 python3-venv
 python3-wheel
 
 ##### Dependências Odoo #####
-libxml2-dev
-libxslt1-dev
-libevent-dev
-libsasl2-dev
-libldap2-dev
+#libxml2-dev
+#libxslt1-dev
+#libevent-dev
+#libsasl2-dev
+#libldap2-dev
 
-libjpeg-dev
-libtiff5-dev
-libjpeg-dev
-libopenjp2-7-dev
-zlib1g-dev
-libfreetype6-dev
-liblcms2-dev
-libwebp-dev
-libharfbuzz-dev
-libfribidi-dev
-libxcb1-dev
+#libjpeg-dev
+#libtiff5-dev
+#libjpeg-dev
+#libopenjp2-7-dev
+#zlib1g-dev
+#libfreetype6-dev
+#liblcms2-dev
+#libwebp-dev
+#libharfbuzz-dev
+#libfribidi-dev
+#libxcb1-dev
 
 # Ferramentas
 gcc
