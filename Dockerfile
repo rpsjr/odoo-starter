@@ -28,11 +28,11 @@ ENV LC_ALL pt_BR.UTF-8
 
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install cryptography
 
-USER odoo
-
 # Install requirements
 RUN pip3 install setuptools && pip3 install --no-cache-dir --upgrade pip
 RUN pip3 install -r requirements.txt
+
+USER odoo
 
 # Copy to root directory
 COPY ./entrypoint.sh /
